@@ -371,6 +371,26 @@ private:
       return false;
     }
 
+    irParams.fx = cameraMatrixDepth.at<double>(0, 0);
+    irParams.fy = cameraMatrixDepth.at<double>(1, 1);
+    irParams.cx = cameraMatrixDepth.at<double>(0, 2);
+    irParams.cy = cameraMatrixDepth.at<double>(1, 2);
+    irParams.k1 = distortionDepth.at<double>(0, 0);
+    irParams.k2 = distortionDepth.at<double>(0, 1);
+    irParams.p1 = distortionDepth.at<double>(0, 2);
+    irParams.p2 = distortionDepth.at<double>(0, 3);
+    irParams.k3 = distortionDepth.at<double>(0, 4);
+ 
+    colorParams.fx = cameraMatrixColor.at<double>(0,0);   
+    colorParams.fy = cameraMatrixColor.at<double>(1,1); 
+    colorParams.cx = cameraMatrixColor.at<double>(0,2);
+    colorParams.cy = cameraMatrixColor.at<double>(1,2);
+    colorParams.k1 = distortionColor.at<double>(0,0);
+    colorParams.k2 = distortionColor.at<double>(0,1);
+    colorParams.p1 = distortionColor.at<double>(0,2);
+    colorParams.p2 = distortionColor.at<double>(0,3);
+    colorParams.k3 = distortionColor.at<double>(0,4);
+    
     registration = new libfreenect2::Registration(irParams, colorParams);
 
     return true;
